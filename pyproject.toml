@@ -1,0 +1,22 @@
+[project]
+name = "can-eat-not"
+version = "0.1.0"
+description = "CLI multi-agent (LangGraph + OpenAI Responses) to check if you can eat that — Singlish trainer."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.53.0",
+    "langgraph>=0.6.6",
+    "langchain-core>=0.3.13",
+    "langchain-openai>=0.2.14",
+    "python-dotenv>=1.0.1",
+]
+
+[tool.uv]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+exclude = ["app*"]
