@@ -11,40 +11,50 @@ This application uses **3 intelligent LLM-powered agents** working together in a
 - **Technology**: LLM-powered (gpt-5-nano) with Singlish persona
 - **Responsibilities**: 
   - Collects user profile (age, sex, height, weight, activity level)
-  - Asks for food requests after nutrition analysis
+  - Asks for specific food items to analyze
   - Provides final "can eat or not" recommendations
+  - Coordinates the overall conversation flow
 
 ### **🥼 Nutritionist Agent** 
-- **Role**: Health and nutrition analysis
+- **Role**: Health analysis and meal planning
 - **Technology**: LLM-enhanced calculations with professional expertise
 - **Responsibilities**:
   - Calculates BMI, BMR, TDEE using Mifflin-St Jeor equation
   - Determines target calories for weight loss
-  - Provides personalized health assessments and recommendations
+  - Provides personalized health assessments and meal plans
+  - Handles nutrition advice and dietary guidance
 
 ### **🍎 Food Specialist Agent**
-- **Role**: Food analysis and nutritional insights
-- **Technology**: **Fully LLM-powered** - no database dependencies!
+- **Role**: Specific food analysis for consumption decisions
+- **Technology**: **Fully LLM-powered** - analyzes ANY food using AI knowledge
 - **Responsibilities**:
-  - Analyzes ANY food using comprehensive AI nutritional knowledge
+  - Analyzes specific food items when user wants to eat something
   - Provides detailed nutritional breakdowns (calories, macros)
-  - Offers portion recommendations and health tips
+  - Offers portion recommendations and health impact assessment
+  - **Only triggered for specific consumption requests**
 
 ## 🔄 Intelligent Workflow
 
-The agents work together in a carefully orchestrated sequence:
+The agents work together with smart routing logic:
 
+### **Profile & Nutrition Setup:**
 1. **Profile Collection** → 🧑‍🏫 Trainer collects user's health profile
 2. **Nutrition Analysis** → 🥼 Nutritionist calculates BMI, target calories, etc.
-3. **Food Request** → 🧑‍🏫 Trainer asks what food user wants to analyze
-4. **Food Analysis** → 🍎 Food Specialist analyzes ANY food using AI knowledge
-5. **Final Recommendation** → 🧑‍🏫 Trainer provides verdict based on all data
+
+### **User Request Routing:**
+3. **Meal Planning Request** → 🥼 Nutritionist provides diet plans and nutrition advice
+4. **Specific Food Request** → 🍎 Food Specialist analyzes the food item
+5. **Final Recommendation** → 🧑‍🏫 Trainer provides verdict based on analysis
+
+### **Smart Detection:**
+- **Meal Planning**: "meal plan", "diet advice", "what should I eat" → Routes to Nutritionist
+- **Food Consumption**: "I want to eat pizza", "can I eat KFC" → Routes to Food Specialist
 
 ## 🛠️ Technology Stack
 
 - **Framework**: [LangGraph](https://langchain-ai.github.io/langgraph/) for multi-agent orchestration
 - **LLM**: OpenAI gpt-5-nano via [LangChain](https://python.langchain.com/)
-- **Language**: Python 3.10+ with type hints
+- **Language**: Python 3.10+ with comprehensive type hints
 - **Package Manager**: [uv](https://docs.astral.sh/uv/) for fast dependency management
 - **Architecture**: Clean separation with `state.py`, `nodes.py`, `agents/`
 - **Food Analysis**: **100% LLM-powered** - no external databases required!
@@ -77,52 +87,66 @@ uv run python main.py
 === CAN-EAT-NOT: Multi-Agent Nutrition Assistant ===
 🧑‍🏫 Trainer | 🥼 Nutritionist | 🍎 Food Specialist
 
+# Profile Collection Phase
 Trainer 🧑‍🏫: Hi there! I'm your fitness trainer lah! What's your age?
 You: 25
-
 Trainer 🧑‍🏫: Great! Are you male or female?
 You: male
-
 [... profile collection continues ...]
 
+# Nutrition Analysis Phase  
 Nutritionist 🥼: Based on your profile: BMI 22.5 (normal), target 1800 cal/day for weight loss.
 
-Trainer 🧑‍🏫: Perfect! What food would you like me to analyze?
-You: 2 slices of pizza
+# Meal Planning Request
+You: Can you give me a meal plan?
+Nutritionist 🥼: Here's a personalized meal plan for your 1800 calorie target...
 
-Food Specialist 🍎: 2 slices of pizza contain approximately 560 calories with 24g protein, 58g carbs, 26g fat. That's about 31% of your daily target!
+# Specific Food Analysis Request
+You: I want to eat 2 slices of pizza
+Food Specialist 🍎: 2 slices of pizza contain approximately 560 calories...
 
-Trainer 🧑‍🏫: Hmm, quite high in calories leh! Maybe can eat 1 slice instead? ⚠️
+# Final Recommendation
+Trainer 🧑‍🏫: Based on the analysis, that's 31% of your daily calories. Can eat lah, but maybe balance with lighter meals today! ✅
 ```
 
 ## 📁 Project Structure
 
 ```
 can-eat-not/
+├── .gitignore              # Comprehensive git ignore rules
+├── README.md               # Complete documentation  
 ├── main.py                 # Application entry point & graph building
 ├── state.py                # State management with TypedDict definitions
 ├── nodes.py                # Node functions & intelligent routing logic
-├── agents/                 # Multi-agent system
-│   ├── trainer.py          # LLM-powered trainer agent
-│   ├── nutritionist.py     # LLM-enhanced nutrition analysis
-│   └── food_specialist.py  # Fully LLM-powered food analysis
-└── pyproject.toml          # Dependencies & project config
+├── pyproject.toml          # Dependencies & project config
+└── agents/                 # Multi-agent system
+    ├── __init__.py
+    ├── trainer.py          # LLM-powered trainer agent
+    ├── nutritionist.py     # LLM-enhanced nutrition analysis
+    └── food_specialist.py  # Fully LLM-powered food analysis
 ```
 
 ## 🎯 Key Features
 
 - **🧠 Fully AI-Powered**: All agents use LLM intelligence - no hardcoded databases!
 - **🌍 Universal Food Analysis**: Can analyze ANY food using AI nutritional knowledge
+- **🎯 Smart Request Routing**: Distinguishes between meal planning and food consumption requests
 - **💬 Natural Conversations**: Singlish-style interactions feel authentic
 - **📊 Comprehensive Health Analysis**: BMI, BMR, TDEE with personalized insights
-- **🤝 Smart Agent Coordination**: Seamless handoffs between specialized agents
+- **🤝 Intelligent Agent Coordination**: Seamless handoffs between specialized agents
 - **🛡️ Graceful Fallbacks**: Robust error handling when LLM calls fail
 - **🔍 Debug Transparency**: Clear routing decisions visible during execution
 
 ## 🌟 Why This Architecture?
 
+### **Smart Agent Routing**
+- **Context-Aware**: Routes requests to the most appropriate agent
+- **Meal Planning**: Nutritionist handles diet advice and meal plans
+- **Food Analysis**: Food specialist only analyzes specific consumption requests
+- **Coordination**: Trainer manages the overall conversation flow
+
 ### **No Database Dependencies**
-- **Flexibility**: Can analyze any food, not limited to a predefined database
+- **Flexibility**: Can analyze any food, not limited to predefined databases
 - **Scalability**: No need to maintain or update food databases
 - **Intelligence**: LLM provides contextual, nuanced nutritional analysis
 - **Simplicity**: Fewer moving parts, easier to deploy and maintain
@@ -140,10 +164,11 @@ can-eat-not/
 ## 🤝 Contributing
 
 This project demonstrates advanced multi-agent architecture patterns using LangGraph with fully LLM-powered agents. Perfect for learning:
-- Multi-agent coordination
-- LangGraph workflows
+- Multi-agent coordination and routing
+- LangGraph workflows and conditional edges
 - Clean architecture patterns
 - LLM-powered applications
+- Intelligent conversation management
 
 ## 📄 License
 

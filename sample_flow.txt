@@ -1,0 +1,162 @@
+(caneatnot) 󰣇 Architecting_Agentic_ai_solutions/caneatnot/can-eat-not   master  ! ❯ 
+❯ uv run python main.py                                                                                                                                                                                             3.13.7 conda ◯ caneatnot  22:58 
+=== CAN-EAT-NOT: Multi-Agent Nutrition Assistant ===
+🧑‍🏫 Trainer | 🥼 Nutritionist | 🍎 Food Specialist
+Type 'exit', 'quit', or ':q' to end the session.
+
+Let's help you make healthy food choices! 🌟
+
+
+🧑‍🏫 Trainer is thinking...
+🧑‍🏫 Trainer called - Profile: False, Nutrition: False, Food Request: False, Food Analysis: False
+🧑‍🏫 Trainer: Handling profile collection
+
+Trainer 🧑‍🏫: Eh hello! Welcome lah, I'm your friendly fitness coach here. I help you plan workouts, makan, and daily habits tailored to your lifestyle. To build a proper plan, I collect a few quick profile details one by one. For now, can you share your age (in years)? Baby steps lah, just a number between 1 and 120. Thanks! leh
+
+You: 40
+
+🧑‍🏫 Trainer is thinking...
+🧑‍🏫 Trainer called - Profile: False, Nutrition: False, Food Request: False, Food Analysis: False
+🧑‍🏫 Trainer: Handling profile collection
+
+Trainer 🧑‍🏫: Nice one, 40 lah. Got your age already. Next up lah: you are male or female? please tell me 'male' or 'female'.
+
+You: male
+
+🧑‍🏫 Trainer is thinking...
+🧑‍🏫 Trainer called - Profile: False, Nutrition: False, Food Request: False, Food Analysis: False
+🧑‍🏫 Trainer: Handling profile collection
+
+Trainer 🧑‍🏫: Nice lah, sex set to male. Next up: what’s your height in cm? Please give me one number in cm (e.g. 175 or 175.5). Keep within 80–250 cm, lah.
+
+You: 175 
+
+🧑‍🏫 Trainer is thinking...
+🧑‍🏫 Trainer called - Profile: False, Nutrition: False, Food Request: False, Food Analysis: False
+🧑‍🏫 Trainer: Handling profile collection
+
+Trainer 🧑‍🏫: Nice lah, 175 cm noted. Next up: what’s your weight in kg? Please give me one number (e.g. 72.5 or 72). Range 20–400 lah.
+
+You: 80
+
+🧑‍🏫 Trainer is thinking...
+🧑‍🏫 Trainer called - Profile: False, Nutrition: False, Food Request: False, Food Analysis: False
+🧑‍🏫 Trainer: Handling profile collection
+
+Trainer 🧑‍🏫: Nice one, 80 kg noted lah. Next up: your activity level ah? Pick from sedentary, light, moderate, active, very_active. Tell me which one lah.
+
+You: light
+
+🧑‍🏫 Trainer is thinking...
+🧑‍🏫 Trainer called - Profile: False, Nutrition: False, Food Request: False, Food Analysis: False
+🧑‍🏫 Trainer: Handling profile collection
+
+Trainer 🧑‍🏫: Nice lah, got your activity level as 'light' leh. Next one: is this your first meal of the day? Answer with Yes or No lah.
+
+You: yes
+
+🧑‍🏫 Trainer is thinking...
+🧑‍🏫 Trainer called - Profile: False, Nutrition: False, Food Request: False, Food Analysis: False
+🧑‍🏫 Trainer: Handling profile collection
+
+Trainer 🧑‍🏫: Nice lah! Confirmed: your first meal today is Yes. Profile now complete: age 40, sex male, height 175 cm, weight 80 kg, activity level light, first_meal = true lah. Next, I can help you with a beginner workout plan and a simple eating guide leh. What you want me to focus on first leh?
+🔄 Routing - Profile: True, Nutrition: False, Food Request: False, Food Analysis: False, Awaiting Food: False
+
+🥼 Nutritionist is analyzing your profile...
+
+Nutritionist 🥼: Here’s a professional, person-friendly plan to help you lose fat steadily while protecting lean mass, lah. We’ll use your numbers (BMI ~26.1, weight 80 kg, height 175 cm, age 40, sex male), and the proposed calories/macros to guide practical steps.
+
+1) Health assessment
+- BMI of 26.1 places you in the “overweight” category. This status is associated with modestly higher risks for metabolic and cardiovascular factors, but it’s not a diagnosis by itself. You’re at a stage where gradual fat loss can improve health markers without extreme dieting.
+- Your BMR is about 1700 kcal/day and your TDEE (with light activity) around 2336 kcal/day. Targeting about 1836 kcal/day creates a sustainable daily deficit of ~500 kcal, which aligns with an approximately 0.4–0.5 kg fat loss per week over time. This pace is steady and more sustainable than rapid cuts.
+- First meal: you’re starting with breakfast; distributing protein and fiber across meals will support satiety and energy levels through the day.
+
+2) Personalized weight loss plan (calories and macros)
+- Target daily calories: ~1836 kcal/day (already calculated for you).
+- Macros (your plan): protein 128 g, carbs 183.6 g, fat 61.2 g.
+  - Approximate energy contribution: ~512 kcal from protein, ~734 kcal from carbs, ~551 kcal from fat. This sums to ~1797 kcal, which is close to the target; rounding differences are normal. If you stick with 1836 kcal, you’ll be in a gentle deficit while meeting protein needs.
+- Protein: 128 g (~1.6 g/kg body weight). This level supports lean mass during weight loss and helps with satiety. If you add resistance training or feel very hungry, you can nudge toward 1.8–2.0 g/kg (about 144–160 g/day) without dramatically altering total calories.
+- Carbs and fats: The split (~40% carbs, ~30% fat, ~28–32% protein) can support energy for daily activities and workouts while still enabling fat loss. Prioritize high-fiber, minimally processed carbs (vegetables, fruits, whole grains) and healthy fats (oints like olive oil, avocado, nuts).
+
+3) Practical, sustainable steps
+- Meal pattern: Aim for 3 main meals with 1–2 small, protein-rich snacks if hungry (e.g., Greek yogurt, a boiled egg, a handful of nuts, or a protein shake). Since you have First Meal: True, consider having a protein-rich breakfast (e.g., eggs/egg whites with veggies and a portion of yogurt or a protein smoothie) to kick-start satiety and stability.
+- Protein distribution: Target roughly 30–40 g protein per meal to support muscle protein synthesis and satiety across the day.
+- Food quality: Emphasize whole foods—lean proteins (chicken, fish, tofu, eggs), high-fiber vegetables, legumes, whole grains, fruits, and healthy fats. Limit ultra-processed snacks; they can derail your deficit due to low satiety and high caloric density.
+- Hydration and caffeine: 2–3 liters of water daily (adjust for activity). If you drink coffee or tea, keep added sugars low. Coffee before workouts can help performance, but avoid piling on sugar.
+- Sleep and stress: Aim for 7–9 hours of quality sleep. Poor sleep and chronic stress can derail appetite regulation and set you back on weight loss.
+
+4) Activity plan to support the deficit
+- Current level: light activity. Add steady, sustainable movement and some resistance training.
+  - Cardiovascular: 150–210 minutes of moderate activity per week (e.g., brisk walking, cycling) accumulated across most days.
+  - Resistance training: 2–3 sessions per week targeting all major muscle groups. This helps preserve lean mass during a calorie deficit and can improve metabolic health.
+- Practical starter: 30–40 minute brisk walks on most days + 2 short home strength sessions (e.g., bodyweight or dumbbell routine with squats, push-ups, rows, and planks).
+
+5) Monitoring and adjustments
+- Track a simple set of metrics: weekly weight (same time, post-pee, pre-breakfast), body measurements (waist, chest, hips every 2–4 weeks), and progress in workouts (strength increases, energy level).
+- If weight loss stalls for 2–3 weeks, consider a small adjustment: either reduce daily calories by ~100 kcal or increase daily activity slightly (1500–2000 extra steps per day, add 1 workout session).
+- Stay flexible: social meals happen. Plan for them with a modest deficit around those occasions rather than making up for it with a crash diet later.
+
+6) Common pitfalls to avoid
+- Skipping breakfast thinking it saves calories. A protein-rich breakfast helps satiety and energy for the day.
+- Very low protein or extreme restriction. It risks losing lean mass and worsens appetite control.
+- Extreme restriction on weekends. Consistency over a week matters more than daily perfection.
+- Not adjusting for activity. If you start lifting or walking more, you may need to nudge calories or protein a bit to balance hunger and energy.
+
+In short: your plan is solid for sustainable fat loss. With a ~500 kcal daily deficit, focus on protein-rich meals, steady movement, and 2–3 resistance sessions weekly. You’ll likely see gradual progress while maintaining energy and mood. Steady lah, you got this!
+
+🔄 Routing - Profile: True, Nutrition: True, Food Request: False, Food Analysis: False, Awaiting Food: False
+
+🧑‍🏫 Trainer is thinking...
+🧑‍🏫 Trainer called - Profile: True, Nutrition: True, Food Request: False, Food Analysis: False
+🧑‍🏫 Trainer: Asking for food request
+
+Trainer 🧑‍🏫: Perfect! Now I know your nutritional needs - you should aim for about 1836 calories per day for weight loss. What food would you like me to analyze for you? For example, you can ask about apples, bananas, cappuccino, toast, ham, or cheese!
+
+You: I want to eat kfc
+
+🧑‍🏫 Trainer is thinking...
+🧑‍🏫 Trainer called - Profile: True, Nutrition: True, Food Request: True, Food Analysis: False
+🧑‍🏫 Trainer: Food request detected but no analysis - this should go to food specialist!
+
+Trainer 🧑‍🏫: Let me get our food specialist to analyze that for you!
+🔄 Routing - Profile: True, Nutrition: True, Food Request: True, Food Analysis: False, Awaiting Food: False
+
+🍎 Food Specialist is analyzing your food...
+
+Food Specialist 🍎: Wah, you wanna eat KFC lah? No problem. You can fit KFC into a weight-loss plan, but choose the leaner options and mind the portions. Here’s a practical, data-backed look tailored to your goals (1836 kcal/day; 128 g protein; 183.6 g carbs; 61.2 g fat). The suggested KFC first-meal option below focuses on high protein with moderate calories, so you’re still on track for the day.
+
+First-meal option (KFC): Grilled Chicken Breast (2 pieces) + Corn on the Cob + Side Salad with Light Dressing. This combo is around 440 kcal and delivers roughly 62 g of protein, about 33 g of carbs, and around 8 g of fat. It’s a solid way to FAT-LREEP (hit protein) early in the day while keeping calories reasonable. Of course, actual values vary by country and portion, so you’ll see small differences, lah. 
+
+Daily plan mindset: Your target is 128 g protein. With this first meal giving ~62 g, you’d need about 66 g more protein across the rest of the day. Carbs left ~150 g+ (since the meal has ~33 g), and fat left ~53 g. A practical way is to divide the remaining calories into two main meals and a protein-rich snack, prioritizing lean protein and vegetables to support fullness and micronutrient intake. Aim to spread roughly 40–50 g protein per main meal and keep added sugars low. If you want to include more KFC later, prefer grilled/poached items and avoid high-sodium, high-fat sides or sauces. Steady lah.
+
+Health note: KFC tends to be high in sodium and saturated fat, especially with crispy/fried options and sauces. To minimize downsides, favor grilled/lean options, skip sauces or use them on the side, choose salads or veggie-forward sides, and stay hydrated. If you have hypertension or are salt-sensitive, you may want to limit frequency of fried items and high-sodium combos. 
+
+Bottom line: A KFC meal can fit in, but plan the rest of the day to meet your protein goal and stay within calories. Your first meal can set a positive tone for the day. 
+🔄 Routing - Profile: True, Nutrition: True, Food Request: True, Food Analysis: True, Awaiting Food: False
+
+🧑‍🏫 Trainer is thinking...
+🧑‍🏫 Trainer called - Profile: True, Nutrition: True, Food Request: True, Food Analysis: True
+🧑‍🏫 Trainer: Generating final recommendation
+
+Trainer 🧑‍🏫: Verdict: Can eat KFC, but not a free-for-all lah. With your stats (BMI ≈ 26.1, BMR ≈ 1699 kcal, TDEE ≈ 2336 kcal) and a target of about 1836 kcal/day, you’re in a sustainable fat-loss deficit of roughly 500 kcal. KFC is usually high in fat and sodium, so plan rather than chow freely. If you want to have KFC, aim for a meal around 400–500 kcal and adjust the rest of your day to hit 128 g protein and roughly 60 g fat, while keeping total calories near 1836.
+
+Practical tips:
+- Choose a leaner KFC option if available (white meat, smaller portion). If not, pick 1 chicken piece and pair with lower-calorie sides.
+- Prefer sides like corn on the cob or a side salad; skip or minimize fries and gravy to cut extra fat and calories.
+- Drink water or unsweetened beverages; avoid sugary drinks.
+- Use the rest of the day to boost protein while keeping carbs and fats in check. For example, add protein-rich foods (egg whites, chicken breast, tofu, fish) and plenty of vegetables; limit refined carbs to fit the 1836 kcal target.
+- If you go big on KFC, compensate by trimming calories earlier (breakfast/lunch) and choosing high-protein, lower-fat options to stay near protein goal of ~128 g.
+
+Health note: Regular fried foods can raise saturated fat and sodium intake; balance with fiber-rich veggies and lean proteins on other meals. Stay hydrated and don’t rely on fast food as a daily habit for sustainable results.
+
+You can do this lah—small tweaks every day compound into real progress. Stay consistent, track portions, and keep yourself motivated!
+
+=== SESSION COMPLETE ===
+
+Thank you for using Can-Eat-Not! Stay healthy! 🌟
+
+==================================================
+📋 FINAL SUMMARY:
+==================================================
+Recommendation: If you want KFC, limit to a 400–500 kcal KFC meal with leaner sides and water, then adjust the rest of the day to hit ~128 g protein and ~60 g fat within ~1836 kcal. Regularly monitor portions and stay consistent for sustainable weight loss.
+Verdict: ✅ CAN EAT

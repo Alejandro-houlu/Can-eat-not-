@@ -26,9 +26,24 @@ def human_node(state: State) -> dict:
         timestamp=datetime.now().isoformat()
     ))
     
-    # Check if this looks like a food request
-    food_keywords = ["eat", "apple", "banana", "toast", "cappuccino", "cheese", "ham", "food"]
-    is_food_request = any(keyword in user_input.lower() for keyword in food_keywords)
+    # Check if this looks like a specific food consumption request (not general meal planning)
+    # Only trigger food specialist for specific food items the user wants to eat
+    consumption_phrases = [
+        "i want to eat", "can i eat", "i'm eating", "eating", "i'll eat", "let me eat",
+        "should i eat", "is it ok to eat", "can eat", "want to eat"
+    ]
+    specific_foods = ["apple", "banana", "toast", "cappuccino", "cheese", "ham", "kfc", "pizza", "burger", "chicken"]
+    
+    user_lower = user_input.lower()
+    
+    # Check if user is asking about eating something specific
+    has_consumption_intent = any(phrase in user_lower for phrase in consumption_phrases)
+    has_specific_food = any(food in user_lower for food in specific_foods)
+    
+    # Only set as food request if both consumption intent AND specific food are present
+    # OR if it's a clear food item with quantity (e.g., "2 apples", "kfc meal")
+    is_food_request = (has_consumption_intent and has_specific_food) or \
+                     any(f"{num} {food}" in user_lower for num in ["1", "2", "3", "4", "5", "one", "two", "three"] for food in specific_foods)
     
     return {
         "messages": messages,
@@ -58,6 +73,7 @@ def determine_next_agent(state: State) -> Literal["trainer", "nutritionist", "fo
     has_nutrition_profile = bool(state.get("nutrition_profile"))
     has_food_analysis = bool(state.get("food_analysis"))
     awaiting_food_request = state.get("awaiting_food_request", False)
+    user_input = state.get("current_user_input", "").lower()
     
     print(f"🔄 Routing - Profile: {profile_complete}, Nutrition: {has_nutrition_profile}, Food Request: {bool(food_request)}, Food Analysis: {has_food_analysis}, Awaiting Food: {awaiting_food_request}")
     
@@ -69,15 +85,22 @@ def determine_next_agent(state: State) -> Literal["trainer", "nutritionist", "fo
     if profile_complete and not has_nutrition_profile:
         return "nutritionist"
     
-    # Step 3: After nutrition analysis, trainer should ask for food
-    if profile_complete and has_nutrition_profile and not food_request and not awaiting_food_request:
-        return "trainer"  # Trainer asks for food
+    # Step 3: Check if user is asking for meal planning/nutrition advice (not specific food)
+    meal_planning_keywords = ["meal plan", "diet plan", "nutrition plan", "what should i eat", "meal ideas", "diet advice"]
+    is_meal_planning_request = any(keyword in user_input for keyword in meal_planning_keywords)
     
-    # Step 4: If we have food request but no food analysis, analyze food
+    if profile_complete and has_nutrition_profile and is_meal_planning_request:
+        return "nutritionist"  # Route to nutritionist for meal planning
+    
+    # Step 4: After nutrition analysis, trainer should ask for specific food to analyze
+    if profile_complete and has_nutrition_profile and not food_request and not awaiting_food_request:
+        return "trainer"  # Trainer asks for specific food
+    
+    # Step 5: If we have specific food request but no food analysis, analyze food
     if food_request and not has_food_analysis:
         return "food_specialist"
     
-    # Step 5: If we have everything, make final recommendation
+    # Step 6: If we have everything, make final recommendation
     if (profile_complete and has_nutrition_profile and has_food_analysis and 
         not state.get("final_recommendation")):
         return "trainer"  # Trainer gives final recommendation

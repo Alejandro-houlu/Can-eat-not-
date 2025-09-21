@@ -17,16 +17,29 @@ def trainer(state: State) -> Dict[str, Any]:
     has_food_analysis = bool(state.get("food_analysis"))
     food_request = state.get("food_request")
     
+    print(f"🧑‍🏫 Trainer called - Profile: {profile_complete}, Nutrition: {has_nutrition_profile}, Food Request: {bool(food_request)}, Food Analysis: {has_food_analysis}")
+    
     # If we have everything needed, provide final recommendation
     if (profile_complete and has_nutrition_profile and has_food_analysis and 
         not state.get("final_recommendation")):
+        print("🧑‍🏫 Trainer: Generating final recommendation")
         return _generate_final_recommendation(state)
+    
+    # If we have a food request but no analysis, we should NOT be here - routing should go to food specialist
+    if food_request and not has_food_analysis:
+        print("🧑‍🏫 Trainer: Food request detected but no analysis - this should go to food specialist!")
+        return {
+            "message": "Let me get our food specialist to analyze that for you!",
+            "awaiting_user_input": False
+        }
     
     # If profile complete and nutrition done but no food request, ask for food
     if profile_complete and has_nutrition_profile and not food_request:
+        print("🧑‍🏫 Trainer: Asking for food request")
         return _ask_for_food_request(state)
     
     # Otherwise, handle profile collection
+    print("🧑‍🏫 Trainer: Handling profile collection")
     return _handle_profile_collection(state, user_input, user_profile)
 
 
